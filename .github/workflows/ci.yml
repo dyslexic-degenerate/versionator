@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install Crystal
+        uses: oprypin/install-crystal@v1
+      - name: Install dependencies
+        run: shards install
+      - name: Run tests (no VERSIONATOR)
+        run: crystal spec
+      - name: Run tests (with VERSIONATOR)
+        run: VERSIONATOR=x.y.z crystal spec
+  generate-docs:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install Crystal
+        uses: oprypin/install-crystal@v1
+      - name: Install dependencies
+        run: shards install
+      - name: Generate Documentation
+        run: crystal docs
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.3
+        with:
+          branch: gh-pages
+          folder: docs

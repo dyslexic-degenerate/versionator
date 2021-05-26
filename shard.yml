@@ -1,0 +1,12 @@
+name: versionator
+version: 0.1.0
+description: Embeddable versions in crystal applications at compile time.
+homepage: https://github.com/dyslexic-degenerate/versionator
+documentation: ""
+
+authors:
+  - Dyslexic Degenerate
+
+crystal: 1.0.0
+
+license: MIT
