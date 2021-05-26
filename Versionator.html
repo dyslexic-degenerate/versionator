@@ -111,7 +111,7 @@ providing the version pulled from <code>git tag</code> when available.</p>
   </h2>
   
     
-      <a href="https://github.com/dyslexic-degenerate/versionator/blob/758c4e221dd8967aeca78e658b025a53aed2b2f4/src/versionator.cr#L6" target="_blank">
+      <a href="https://github.com/dyslexic-degenerate/versionator/blob/afcc5cc949782d8f1599ee0272e58a3ab9c8e782/src/versionator.cr#L6" target="_blank">
         versionator.cr
       </a>
     
@@ -119,25 +119,6 @@ providing the version pulled from <code>git tag</code> when available.</p>
   
 
 
-
-  
-    <h2>
-      <a id="constant-summary" class="anchor" href="#constant-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-      Constant Summary
-    </h2>
-  
-  <dl>
-    
-      <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.0&quot;</span></code>
-      </dt>
-      
-    
-  </dl>
 
 
 
@@ -155,6 +136,8 @@ providing the version pulled from <code>git tag</code> when available.</p>
     
       <li class="entry-summary">
         <a href="#version-class-method" class="signature"><strong>.version</strong></a>
+        
+          <div class="summary"><p>returns either the version set with <code>ENV[VERSIONATOR]</code> or the most recent tag via <code>git describe --tags --dirty</code></p></div>
         
       </li>
     
@@ -190,10 +173,16 @@ providing the version pulled from <code>git tag</code> when available.</p>
         <a class="method-permalink" href="#version-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>returns either the version set with <code>ENV[VERSIONATOR]</code> or the most recent
+tag via <code>git describe --tags --dirty</code></p>
+        </div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/dyslexic-degenerate/versionator/blob/758c4e221dd8967aeca78e658b025a53aed2b2f4/src/versionator.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/dyslexic-degenerate/versionator/blob/afcc5cc949782d8f1599ee0272e58a3ab9c8e782/src/versionator.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
