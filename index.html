@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.36.1">
+<meta name="crystal_docs.project_version" content="wip">
+<meta name="crystal_docs.project_name" content="versionator">
+
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+  <meta name="repository-name" content="versionator">
+  <title>versionator wip</title>
+  <script type="text/javascript">
+  CrystalDocs.base_path = "";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          versionator
+        </a>
+      </h1>
+
+      <span class="project-version">
+        wip
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="versionator/Versionator" data-name="versionator">
+      <a href="Versionator.html">Versionator</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1><a id="versionator" class="anchor" href="#versionator">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>versionator</h1>
+
+<p>Embeddable versions in <a href="https://crystal-lang.org/">crystal</a> applications at compile time. Convention over configuration with <a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">git tags</a>.</p>
+
+<p>&lt;img src="eric-krull-Ejcuhcdfwrs-unsplash.jpg" alt="Photo of chairs by James Wheeler" />
+Photo by &lt;a href="https://unsplash.com/@ekrull?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Eric Krull&lt;/a> on &lt;a href="https://unsplash.com/s/photos/cyborg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash&lt;/a></p>
+
+<h2><a id="project-health-status" class="anchor" href="#project-health-status">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Project Health Status</h2>
+
+<p><a href="https://github.com/dyslexic-degenerate/versionator/actions/workflows/ci.yml"><img src="https://github.com/dyslexic-degenerate/versionator/actions/workflows/ci.yml/badge.svg" alt="CI"/></a></p>
+
+<h2><a id="quick-start" class="anchor" href="#quick-start">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Quick start</h2>
+
+<p>Add the dependency to your <code>shard.yml</code> and install versionator.</p>
+
+<pre><code class="language-yaml">dependencies:
+  versionator:
+    github: dyslexic-degenerate/versionator</code></pre>
+
+<pre><code class="language-sh">> shards install</code></pre>
+
+<p>Require versionator and use it to access the version:</p>
+
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;versionator&quot;</span>
+
+<span class="k">module</span> <span class="t">MyApp</span>
+  puts <span class="s">&quot;version: </span><span class="i">#{</span><span class="t">Versionator</span>.version<span class="i">}</span><span class="s">&quot;</span>
+<span class="k">end</span></code></pre>
+
+<p>Build your application and embed your version:</p>
+
+<pre><code class="language-sh">> VERSIONATOR=x.y.z shards build
+
+> ./bin/myapp
+
+version: x.y.z</code></pre>
+
+<h2><a id="fun-stuff..." class="anchor" href="#fun-stuff...">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Fun Stuff...</h2>
+
+<p>Versionator leverages convention over configuration by extracting the current version at compile time directly from git using <code>git describe --tags --dirty</code>.</p>
+
+<p>For details on <code>git describe</code> and how it works: https://git-scm.com/docs/git-describe</p>
+
+<p>This versioning technique extracts the most recent tag set using <code>git tag</code>.</p>
+
+<p>In order for this to work you must have at least one tag set.</p>
+
+<p>Don't forget to <code>git push</code> and <code>git fetch</code> your tags.</p>
+
+<p>For example:</p>
+
+<pre><code class="language-sh"># When the most recent tag matches the most recent commit with a clean working tree
+> git describe --tags --dirty
+v1.0.0
+
+# When the most recent tag matches the most recent commit with a dirty working tree
+> git describe --tags --dirty
+v1.0.0-dirty
+
+# When the most recent tag is 4 commits behind the most recent commit with a clean working tree
+> git describe --tags --dirty
+v1.0.0-4-gc3a421b
+
+# When the most recent tag is 4 commits behind the most recent commit with a dirty working tree
+> git describe --tags --dirty
+v1.0.0-7-gc3a421b-dirty</code></pre>
+
+<p>This versioning technique allows you to get detailed information about the current code being executed within the compiled application.</p>
+
+<h2><a id="common-usage" class="anchor" href="#common-usage">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Common Usage</h2>
+
+<p>Leverage <code>git describe --tags --dirty</code> to provide
+versioning information. All you need are <code>git tag</code>'s and <code>Versionator.version</code>.</p>
+
+<p>For example:</p>
+
+<pre><code class="language-sh">> shards build
+
+> ./bin/myapp
+
+v1.0.0-7-gc3a421b-dirty
+
+# sanity check :)
+> git describe --tags --dirty
+v1.0.0-7-gc3a421b-dirty</code></pre>
+
+<p>When you don't have git for some reason during compilation (not that unusual for release build chains) you can use the VERSIONATOR environment variable to embed the version:</p>
+
+<pre><code class="language-sh">> VERSIONATOR=v1.0.1 shards build
+
+> ./bin/myapp
+
+version: v1.0.1</code></pre>
+
+<h2><a id="contributing" class="anchor" href="#contributing">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributing</h2>
+
+<ol><li>Fork it (&lt;https://github.com/dyslexic-degenerate/versionator/fork>)</li><li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li><li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li><li>Push to the branch (<code>git push origin my-new-feature</code>)</li><li>Create a new Pull Request</li></ol>
+
+<h2><a id="contributors" class="anchor" href="#contributors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributors</h2>
+
+<ul><li><a href="https://github.com/dyslexic-degenerate">Dyslexic Degenerate</a> - creator and maintainer</li></ul>
+</div>
+</body>
+</html>
