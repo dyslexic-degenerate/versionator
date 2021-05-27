@@ -14,8 +14,7 @@ module Versionator
     # returns either the version set with `ENV[VERSIONATOR]` or the most recent
     # tag via `git describe --tags --dirty`
     def self.version
-      gitversion = `git describe --tags --dirty`
-      $?.success? ? gitversion : "unknown"
+      {{ run("./getgit").stringify }}
     end
   {% end %}
 end
