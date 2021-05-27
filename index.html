@@ -104,7 +104,25 @@ Photo by &lt;a href="https://unsplash.com/@ekrull?utm_source=unsplash&utm_medium
   puts <span class="s">&quot;version: </span><span class="i">#{</span><span class="t">Versionator</span>.version<span class="i">}</span><span class="s">&quot;</span>
 <span class="k">end</span></code></pre>
 
-<p>Build your application and embed your version:</p>
+<p>Make sure you have git tags:</p>
+
+<pre><code class="language-sh">> git tag
+
+v1.0.0
+v1.0.1
+
+# set one if not (don't forget to push it)
+> git tag v1.0.1</code></pre>
+
+<p>Build your application:</p>
+
+<pre><code class="language-sh">> shards build
+
+> ./bin/myapp
+
+version: v1.0.1</code></pre>
+
+<p>Or build your application and embed your custom version:</p>
 
 <pre><code class="language-sh">> VERSIONATOR=x.y.z shards build
 
