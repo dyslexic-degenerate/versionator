@@ -33,7 +33,29 @@ module MyApp
 end
 ```
 
-Build your application and embed your version:
+Make sure you have git tags:
+
+```sh
+> git tag
+
+v1.0.0
+v1.0.1
+
+# set one if not (don't forget to push it)
+> git tag v1.0.1
+```
+
+Build your application:
+
+```sh
+> shards build
+
+> ./bin/myapp
+
+version: v1.0.1
+```
+
+Or build your application and embed your custom version:
 
 ```sh
 > VERSIONATOR=x.y.z shards build
